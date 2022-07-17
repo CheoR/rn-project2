@@ -1,11 +1,6 @@
 // import { StatusBar } from "expo-status-bar";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import styles from "./styles";
 
 const DATA = [
   { id: 1, text: "Text1" },
@@ -46,38 +41,6 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
-    backgroundColor: "orange",
-    // width: "100%",
-  },
-  flatList: {
-    backgroundColor: "green",
-    width: "100%",
-    borderColor: "red",
-    borderWidth: 8,
-    padding: 0,
-    margin: 0,
-  },
-  li: {
-    cntr: {
-      backgroundColor: "blue",
-      width: "100%",
-      alignItems: "center",
-      borderColor: "yellow",
-      borderWidth: 8,
-      margin: 8,
-    },
-    text: {
-      color: "yellow",
-    },
-  },
-});
 
 const renderItems = ({ item }) => (
   <View style={styles.li.cntr}>
