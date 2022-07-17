@@ -34,6 +34,10 @@ const DATA = [
 
 const pressHandler = (text) => {
   console.log(text);
+  Alert.alert("Are you a pug", "For lunch reasons", [
+    { text: "Bark", onPress: () => console.log("bark bark bark") },
+    { text: "Moo", onPress: () => console.log("oink oink oink") },
+  ]);
 };
 
 export default function App() {
