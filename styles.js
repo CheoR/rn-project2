@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 8,
     backgroundColor: "orange",
-    // width: "100%",
+    width: "100%",
   },
   flatList: {
     backgroundColor: "green",
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       borderColor: "yellow",
       borderWidth: 8,
-      margin: 8,
+      marginVertical: 8,
     },
     text: {
       color: "yellow",

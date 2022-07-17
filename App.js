@@ -1,5 +1,5 @@
 // import { StatusBar } from "expo-status-bar";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 const DATA = [
@@ -27,6 +27,7 @@ const DATA = [
 
 const pressHandler = (text) => {
   console.log(text);
+  Alert.alert(text);
 };
 
 export default function App() {
