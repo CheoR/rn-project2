@@ -1,5 +1,11 @@
 // import { StatusBar } from "expo-status-bar";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const DATA = [
   { id: 1, text: "Text1" },
@@ -23,6 +29,10 @@ const DATA = [
   { id: 19, text: "Text19" },
   { id: 20, text: "Text20" },
 ];
+
+const pressHandler = (text) => {
+  console.log(text);
+};
 
 export default function App() {
   return (
@@ -71,6 +81,8 @@ const styles = StyleSheet.create({
 
 const renderItems = ({ item }) => (
   <View style={styles.li.cntr}>
-    <Text style={styles.li.text}>{item.text}</Text>
+    <TouchableOpacity onPress={() => pressHandler(item.text)}>
+      <Text style={styles.li.text}>{item.text}</Text>
+    </TouchableOpacity>
   </View>
 );
