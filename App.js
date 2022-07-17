@@ -1,5 +1,12 @@
 // import { StatusBar } from "expo-status-bar";
-import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import styles from "./styles";
 
 const DATA = [
@@ -27,12 +34,14 @@ const DATA = [
 
 const pressHandler = (text) => {
   console.log(text);
-  Alert.alert(text);
 };
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <View style={styles.img}>
+        <Image source={require("./assets/icon.png")} style={styles.img2} />
+      </View>
       <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}

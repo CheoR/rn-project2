@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     padding: 8,
     backgroundColor: "orange",
     width: "100%",
@@ -29,6 +29,15 @@ const styles = StyleSheet.create({
     text: {
       color: "yellow",
     },
+  },
+  img: {
+    height: 200,
+    width: 200,
+    marginBottom: 20,
+  },
+  img2: {
+    height: "100%",
+    width: "100%",
   },
 });
 
