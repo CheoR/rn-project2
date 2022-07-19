@@ -44,6 +44,15 @@ const styles = StyleSheet.create({
     padding: 8,
     marginTop: 8,
   },
+  customBtn: {
+    backgroundColor: "lightgray",
+    borderColor: "black",
+    padding: 20,
+    marginTop: 20,
+    alignItems: "center",
+    borderWidth: 2,
+    borderRadius: 25,
+  },
 });
 
 export default styles;

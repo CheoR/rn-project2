@@ -66,6 +66,11 @@ export default function App() {
           />
         </View>
       </TouchableWithoutFeedback>
+      <TouchableOpacity onPress={() => console.log("custom button pressed")}>
+        <View style={styles.customBtn}>
+          <Text>Custom Button</Text>
+        </View>
+      </TouchableOpacity>
       <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}
