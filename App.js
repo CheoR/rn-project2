@@ -3,8 +3,11 @@ import {
   Alert,
   FlatList,
   Image,
+  Keyboard,
   Text,
+  TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import styles from "./styles";
@@ -46,6 +49,23 @@ export default function App() {
       <View style={styles.img}>
         <Image source={require("./assets/icon.png")} style={styles.img2} />
       </View>
+      <TextInput
+        style={styles.input}
+        placeholder="Doesn't use TouchableWithoutFeedback"
+      />
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+          console.log("Keyboard dismissed");
+        }}
+      >
+        <View>
+          <TextInput
+            style={styles.input}
+            placeholder="Uses TouchableWithoutFeedback"
+          />
+        </View>
+      </TouchableWithoutFeedback>
       <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}

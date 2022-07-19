@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
+  input: {
+    backgroundColor: "lightgreen",
+    padding: 8,
+    marginTop: 8,
+  },
 });
 
 export default styles;
