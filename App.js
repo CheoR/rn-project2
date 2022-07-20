@@ -1,9 +1,13 @@
 // import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+
 import {
   Alert,
+  Button,
   FlatList,
   Image,
   Keyboard,
+  Modal,
   Text,
   TextInput,
   TouchableOpacity,
@@ -44,6 +48,7 @@ const pressHandler = (text) => {
 };
 
 export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.img}>
@@ -71,6 +76,22 @@ export default function App() {
           <Text>Custom Button</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          console.log("modal button pressed");
+          setIsOpen(true);
+        }}
+      >
+        <View style={styles.customBtn}>
+          <Text>Click for Modal</Text>
+        </View>
+      </TouchableOpacity>
+      <Modal visible={isOpen}>
+        <View style={styles.customBtn}>
+          <Text>Modal Pressed</Text>
+          <Button title="Close" onPress={() => setIsOpen(false)} />
+        </View>
+      </Modal>
       <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}
