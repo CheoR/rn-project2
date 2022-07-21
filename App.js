@@ -8,6 +8,7 @@ import {
   Image,
   Keyboard,
   Modal,
+  Switch,
   Text,
   TextInput,
   TouchableOpacity,
@@ -28,6 +29,10 @@ const pressHandler = (text) => {
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => setIsOn((prevState) => !prevState);
+
   return (
     <View style={styles.container}>
       <View style={styles.img}>
@@ -71,6 +76,18 @@ export default function App() {
           <Button title="Close" onPress={() => setIsOpen(false)} />
         </View>
       </Modal>
+      <View style={styles.customBtn}>
+        <Switch
+          trackColor={{
+            true: "green",
+            false: "red",
+          }}
+          thumbColor={isOn ? "red" : "green"}
+          onValueChange={toggleSwitch}
+          value={isOn}
+          ios_backgroundColor="orange"
+        />
+      </View>
       <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}
