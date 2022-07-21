@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import {
+  ActivityIndicator,
   Alert,
   Button,
   FlatList,
@@ -30,14 +31,24 @@ const pressHandler = (text) => {
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOn, setIsOn] = useState(false);
+  const [showAnimator, setShowAnimator] = useState(false);
 
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
+  const runAnimator = () => {
+    setShowAnimator(true);
+    setTimeout(() => {
+      setShowAnimator(false);
+      Alert.alert("This is how you do a animator");
+    }, 2000);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.img}>
         <Image source={require("./assets/icon.png")} style={styles.img2} />
       </View>
+      <ActivityIndicator size="large" color="green" animating={showAnimator} />
+      <Button title="Show Animator" onPress={runAnimator} />
       <TextInput
         style={styles.input}
         placeholder="Doesn't use TouchableWithoutFeedback"
