@@ -9,6 +9,7 @@ import {
   Image,
   Keyboard,
   Modal,
+  SectionList,
   Switch,
   Text,
   TextInput,
@@ -18,7 +19,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-import DATA from "./data/data";
+import DATA, { FOOD_DATA } from "./data/data";
 
 const pressHandler = (text) => {
   console.log(text);
@@ -41,6 +42,12 @@ export default function App() {
       Alert.alert("This is how you do a animator");
     }, 2000);
   };
+
+  const Item = ({ title }) => (
+    <View style={styles.cntr}>
+      <Text style={styles.li.text}>{title}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -99,12 +106,23 @@ export default function App() {
           ios_backgroundColor="orange"
         />
       </View>
-      <FlatList
+      <SectionList
+        sections={FOOD_DATA}
+        keyExtractor={(item, idx) => item + idx}
+        // Default renderer for every item in every section.
+        // Can be over-ridden on a per-section basis.
+        // Should return a React element.
+        // find in FOOD_DATA as data
+        //  { id: Number: data : [String, String]}
+        renderItem={({ item }) => <Item title={item} />}
+        renderSectionHeader={({ section: { title } }) => <Text>{title}</Text>}
+      />
+      {/* <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}
         renderItem={renderItems}
         style={styles.flatList}
-      />
+      /> */}
     </View>
   );
 }

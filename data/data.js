@@ -21,4 +21,32 @@ const DATA = [
   { id: 20, text: "Text20" },
 ];
 
+export const FOOD_DATA = [
+  {
+    id: 1,
+    title: "Main Items",
+    data: ["Pizza", "Burger"],
+  },
+  {
+    id: 2,
+    title: "Sides",
+    data: ["Fires", "Rings"],
+  },
+  {
+    id: 3,
+    title: "Drinks",
+    data: ["Coke", "Not Coke"],
+  },
+  {
+    id: 4,
+    title: "Desserts",
+    data: ["Cookies", "Cake"],
+  },
+  {
+    id: 5,
+    title: "Other",
+    data: ["Human Remains", "Mystery Meat"],
+  },
+];
+
 export default DATA;
