@@ -10,7 +10,9 @@ import {
   Keyboard,
   Modal,
   Pressable,
+  RefreshControl,
   SectionList,
+  ScrollView,
   Switch,
   Text,
   TextInput,
@@ -35,6 +37,7 @@ export default function App() {
   const [isOn, setIsOn] = useState(false);
   const [showAnimator, setShowAnimator] = useState(false);
   const [count, setCount] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
 
   const increment = () => setCount((prevState) => prevState + 1);
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
@@ -44,6 +47,13 @@ export default function App() {
       setShowAnimator(false);
       Alert.alert("This is how you do a animator");
     }, 2000);
+  };
+  const tugMe = () => {
+    setRefreshing(true);
+
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 10000);
   };
 
   const Item = ({ title }) => (
@@ -127,6 +137,14 @@ export default function App() {
           )}
         </Pressable>
       </View>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={tugMe} />
+        }
+      >
+        <Text>Tug to Refresh</Text>
+      </ScrollView>
+      {/* 
       <SectionList
         sections={FOOD_DATA}
         keyExtractor={(item, idx) => item + idx}
@@ -138,7 +156,7 @@ export default function App() {
         renderItem={({ item }) => <Item title={item} />}
         renderSectionHeader={({ section: { title } }) => <Text>{title}</Text>}
       />
-      {/* <FlatList
+      <FlatList
         data={DATA}
         keyExtractor={(item) => item.id}
         renderItem={renderItems}
