@@ -9,6 +9,7 @@ import {
   Image,
   Keyboard,
   Modal,
+  Pressable,
   SectionList,
   Switch,
   Text,
@@ -33,7 +34,9 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [showAnimator, setShowAnimator] = useState(false);
+  const [count, setCount] = useState(0);
 
+  const increment = () => setCount((prevState) => prevState + 1);
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
   const runAnimator = () => {
     setShowAnimator(true);
@@ -105,6 +108,24 @@ export default function App() {
           value={isOn}
           ios_backgroundColor="orange"
         />
+      </View>
+      <View style={styles.pressible.cntr}>
+        <View>
+          <Text>{count}</Text>
+        </View>
+        <Pressable
+          onPress={increment}
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "pink" : "lightgreen" },
+            styles.pressible.text2,
+          ]}
+        >
+          {({ pressed }) => (
+            <Text style={styles.pressible.text}>
+              {pressed ? "Unpress" : "Press Down"}
+            </Text>
+          )}
+        </Pressable>
       </View>
       <SectionList
         sections={FOOD_DATA}

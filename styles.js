@@ -30,6 +30,23 @@ const styles = StyleSheet.create({
       color: "yellow",
     },
   },
+  pressible: {
+    cntr: {
+      backgroundColor: "lightblue",
+      width: "100%",
+      alignItems: "center",
+      borderColor: "green",
+      borderWidth: 8,
+      marginVertical: 8,
+    },
+    text2: {
+      color: "blue",
+    },
+    text: {
+      color: "red",
+      fontSize: 20,
+    },
+  },
   img: {
     height: 200,
     width: 200,
