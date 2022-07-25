@@ -141,6 +141,9 @@ export default function App() {
   const sideDrawer = () => (
     <View style={[styles.container, styles.container.navigationContainer]}>
       <Text style={styles.text}>Side Drawer example</Text>
+      <Text style={{ fontSize: 30, fontWeight: "bold" }}>Account</Text>
+      <Text style={styles.container.text}>{text}</Text>
+      <Text style={styles.container.text}>{number}</Text>
       <Button
         title="Close Drawer"
         onPress={() => drawer.current.closeDrawer()}
@@ -163,203 +166,212 @@ export default function App() {
           title="open drawer"
           onPress={() => drawer.current.openDrawer()}
         />
-      </View>
-      {/*
-  <View style={styles.container}>
-    <Text style={styles.container.label}>Native Label Here</Text>
-    <Animated.View
-      style={[
-        styles.container.fadingContainer,
-        {
-          opacity: fadeAnimation,
-        },
-      ]}
-    >
-      <Text style={styles.container.fadingText}>Fading Text</Text>
-    </Animated.View>
-    <View style={styles.container.buttonRow}>
-      <Button title="Fade In" onPress={fadeIn} />
-
-      <Button title="Fade Out" onPress={fadeOut} />
-    </View>
-
-    <Text>OS</Text>
-    <Text style={styles.osValues}>{Platform.OS}</Text>
-
-    <Text>OS Version</Text>
-    <Text style={styles.osValues}>{Platform.Version}</Text>
-
-    <Text>isTV</Text>
-    <Text style={styles.osValues}>{Platform.isTV.toString()}</Text>
-
-    {Platform.OS === "ios" && (
-      <>
-        <Text>isPad</Text>
-        <Text style={styles.osValues}>{Platform.isPad.toString()}</Text>
-      </>
-    )}
-
-    <Text>Constants</Text>
-    <Text style={styles.osValues}>
-      {JSON.stringify(Platform.constants, null, 2)}
-    </Text>
-
-    <View style={styles.toggleLightMode}>
-      <TextInput
-        style={styles.toggleLightMode.textInput}
-        placeholder="Text here"
-        onChangeText={setText}
-      />
-      <TextInput
-        style={styles.toggleLightMode.textInput}
-        placeholder="Number here"
-        onChangeText={setNumber}
-      />
-      <Text style={styles.toggleLightMode.text}>
-        {text} {number}
-      </Text>
-    </View>
-    <View style={styles.container2}>
-      <Button onPress={showToast} title="Show Toast" />
-      <Button
-        onPress={showToastWithGravity}
-        title="Show Toast with Gravity"
-      />
-      <Button
-        onPress={showToastWithGravityAndOffset}
-        title="Show Toast with Gravity and offset"
-      />
-    </View> */}
-
-      {/* 
-      <TouchableNativeFeedback
-        onPress={() => {
-          setRippleOverflow((prevState) => !prevState.rippleOverflow);
-          setRippleColor(randomColor);
-        }}
-        background={TouchableNativeFeedback.Ripple(
-          rippleColor,
-          rippleOverflow
-        )}
-      >
-        <View>
-          <Text style={styles.li.text}>Touch here</Text>
-        </View>
-      </TouchableNativeFeedback>
-    </View>
-
-    <View style={styles.img}>
-      <Image source={require("./assets/icon.png")} style={styles.img2} />
-    </View>
-    <ActivityIndicator size="large" color="green" animating={showAnimator} />
-    <Button title="Show Animator" onPress={runAnimator} />
-    <TextInput
-      style={styles.input}
-      placeholder="Doesn't use TouchableWithoutFeedback"
-    />
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-        console.log("Keyboard dismissed");
-      }}
-    >
-      <View>
         <TextInput
-          style={styles.input}
-          placeholder="Uses TouchableWithoutFeedback"
+          placeholder="Input Text"
+          onChangeText={setText}
+          style={styles.textInput}
+        />
+        <TextInput
+          placeholder="Input Number"
+          onChangeText={setNumber}
+          style={styles.textInput}
+          keyboardType="numeric"
         />
       </View>
-    </TouchableWithoutFeedback>
-    <TouchableOpacity onPress={() => console.log("custom button pressed")}>
-      <View style={styles.customBtn}>
-        <Text>Custom Button</Text>
-      </View>
-    </TouchableOpacity>
-    <TouchableOpacity
-      onPress={() => {
-        console.log("modal button pressed");
-        setIsOpen(true);
-      }}
-    >
-      <View style={styles.customBtn}>
-        <Text>Click for Modal</Text>
-      </View>
-    </TouchableOpacity>
-    <Modal visible={isOpen}>
-      <View style={styles.customBtn}>
-        <Text>Modal Pressed</Text>
-        <Button title="Close" onPress={() => setIsOpen(false)} />
-      </View>
-    </Modal>
-    <View style={styles.customBtn}>
-      <Switch
-        trackColor={{
-          true: "green",
-          false: "red",
-        }}
-        thumbColor={isOn ? "red" : "green"}
-        onValueChange={toggleSwitch}
-        value={isOn}
-        ios_backgroundColor="orange"
-      />
-    </View>
-    <View>
-      <TextInput
-        placeholder="Press Here"
-        onChangeText={(text) => setText(text)}
-        value={text}
-        inputAccesssoryViewId={inputAccesssoryViewId}
-      />
-      <InputAccessoryView nativeID={InputAccessoryView}>
-        <Button title="Clear" onPress={() => setText("")} />
-      </InputAccessoryView>
-    </View> */}
-      {/* 
-    <View style={styles.pressible.cntr}>
-      <View>
-        <Text>{count}</Text>
-      </View>
-      <Pressable
-        onPress={increment}
-        style={({ pressed }) => [
-          { backgroundColor: pressed ? "pink" : "lightgreen" },
-          styles.pressible.text2,
+      {/*
+      <Text style={styles.container.label}>Native Label Here</Text>
+      <Animated.View
+        style={[
+          styles.container.fadingContainer,
+          {
+            opacity: fadeAnimation,
+          },
         ]}
       >
-        {({ pressed }) => (
-          <Text style={styles.pressible.text}>
-            {pressed ? "Unpress" : "Press Down"}
-          </Text>
-        )}
-      </Pressable>
-    </View>
-    <ScrollView
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={tugMe} />
-      }
-    >
-      <Text>Tug to Refresh</Text>
-    </ScrollView>
+        <Text style={styles.container.fadingText}>Fading Text</Text>
+      </Animated.View>
+      <View style={styles.container.buttonRow}>
+        <Button title="Fade In" onPress={fadeIn} />
+  
+        <Button title="Fade Out" onPress={fadeOut} />
+      </View>
+  
+      <Text>OS</Text>
+      <Text style={styles.osValues}>{Platform.OS}</Text>
+  
+      <Text>OS Version</Text>
+      <Text style={styles.osValues}>{Platform.Version}</Text>
+  
+      <Text>isTV</Text>
+      <Text style={styles.osValues}>{Platform.isTV.toString()}</Text>
+  
+      {Platform.OS === "ios" && (
+        <>
+          <Text>isPad</Text>
+          <Text style={styles.osValues}>{Platform.isPad.toString()}</Text>
+        </>
+      )}
+  
+      <Text>Constants</Text>
+      <Text style={styles.osValues}>
+        {JSON.stringify(Platform.constants, null, 2)}
+      </Text>
+  
+      <View style={styles.toggleLightMode}>
+        <TextInput
+          style={styles.toggleLightMode.textInput}
+          placeholder="Text here"
+          onChangeText={setText}
+        />
+        <TextInput
+          style={styles.toggleLightMode.textInput}
+          placeholder="Number here"
+          onChangeText={setNumber}
+        />
+        <Text style={styles.toggleLightMode.text}>
+          {text} {number}
+        </Text>
+      </View>
+      <View style={styles.container2}>
+        <Button onPress={showToast} title="Show Toast" />
+        <Button
+          onPress={showToastWithGravity}
+          title="Show Toast with Gravity"
+        />
+        <Button
+          onPress={showToastWithGravityAndOffset}
+          title="Show Toast with Gravity and offset"
+        />
+      </View> */}
 
-
-    <SectionList
-      sections={FOOD_DATA}
-      keyExtractor={(item, idx) => item + idx}
-      // Default renderer for every item in every section.
-      // Can be over-ridden on a per-section basis.
-      // Should return a React element.
-      // find in FOOD_DATA as data
-      //  { id: Number: data : [String, String]}
-      renderItem={({ item }) => <Item title={item} />}
-      renderSectionHeader={({ section: { title } }) => <Text>{title}</Text>}
-    />
-    <FlatList
-      data={DATA}
-      keyExtractor={(item) => item.id}
-      renderItem={renderItems}
-      style={styles.flatList}
-    />
-  </View> */}
+      {/* 
+        <TouchableNativeFeedback
+          onPress={() => {
+            setRippleOverflow((prevState) => !prevState.rippleOverflow);
+            setRippleColor(randomColor);
+          }}
+          background={TouchableNativeFeedback.Ripple(
+            rippleColor,
+            rippleOverflow
+          )}
+        >
+          <View>
+            <Text style={styles.li.text}>Touch here</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
+  
+      <View style={styles.img}>
+        <Image source={require("./assets/icon.png")} style={styles.img2} />
+      </View>
+      <ActivityIndicator size="large" color="green" animating={showAnimator} />
+      <Button title="Show Animator" onPress={runAnimator} />
+      <TextInput
+        style={styles.input}
+        placeholder="Doesn't use TouchableWithoutFeedback"
+      />
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+          console.log("Keyboard dismissed");
+        }}
+      >
+        <View>
+          <TextInput
+            style={styles.input}
+            placeholder="Uses TouchableWithoutFeedback"
+          />
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableOpacity onPress={() => console.log("custom button pressed")}>
+        <View style={styles.customBtn}>
+          <Text>Custom Button</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          console.log("modal button pressed");
+          setIsOpen(true);
+        }}
+      >
+        <View style={styles.customBtn}>
+          <Text>Click for Modal</Text>
+        </View>
+      </TouchableOpacity>
+      <Modal visible={isOpen}>
+        <View style={styles.customBtn}>
+          <Text>Modal Pressed</Text>
+          <Button title="Close" onPress={() => setIsOpen(false)} />
+        </View>
+      </Modal>
+      <View style={styles.customBtn}>
+        <Switch
+          trackColor={{
+            true: "green",
+            false: "red",
+          }}
+          thumbColor={isOn ? "red" : "green"}
+          onValueChange={toggleSwitch}
+          value={isOn}
+          ios_backgroundColor="orange"
+        />
+      </View>
+      <View>
+        <TextInput
+          placeholder="Press Here"
+          onChangeText={(text) => setText(text)}
+          value={text}
+          inputAccesssoryViewId={inputAccesssoryViewId}
+        />
+        <InputAccessoryView nativeID={InputAccessoryView}>
+          <Button title="Clear" onPress={() => setText("")} />
+        </InputAccessoryView>
+      </View> */}
+      {/* 
+      <View style={styles.pressible.cntr}>
+        <View>
+          <Text>{count}</Text>
+        </View>
+        <Pressable
+          onPress={increment}
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "pink" : "lightgreen" },
+            styles.pressible.text2,
+          ]}
+        >
+          {({ pressed }) => (
+            <Text style={styles.pressible.text}>
+              {pressed ? "Unpress" : "Press Down"}
+            </Text>
+          )}
+        </Pressable>
+      </View>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={tugMe} />
+        }
+      >
+        <Text>Tug to Refresh</Text>
+      </ScrollView>
+  
+  
+      <SectionList
+        sections={FOOD_DATA}
+        keyExtractor={(item, idx) => item + idx}
+        // Default renderer for every item in every section.
+        // Can be over-ridden on a per-section basis.
+        // Should return a React element.
+        // find in FOOD_DATA as data
+        //  { id: Number: data : [String, String]}
+        renderItem={({ item }) => <Item title={item} />}
+        renderSectionHeader={({ section: { title } }) => <Text>{title}</Text>}
+      />
+      <FlatList
+        data={DATA}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItems}
+        style={styles.flatList}
+      /> */}
     </DrawerLayoutAndroid>
   );
 }
