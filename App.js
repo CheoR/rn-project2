@@ -129,6 +129,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.container.label}>Native Label Here</Text>
+      {/*
       <Animated.View
         style={[
           styles.container.fadingContainer,
@@ -144,7 +146,7 @@ export default function App() {
 
         <Button title="Fade Out" onPress={fadeOut} />
       </View>
-      {/*
+
       <Text>OS</Text>
       <Text style={styles.osValues}>{Platform.OS}</Text>
 

@@ -1,4 +1,4 @@
-import { Appearance, StyleSheet } from "react-native";
+import { Appearance, Platform, PlatformColor, StyleSheet } from "react-native";
 
 const colorScheme = Appearance.getColorScheme();
 
@@ -20,6 +20,20 @@ const styles = StyleSheet.create({
     buttonRow: {
       justifyContent: "center",
       marginVertical: 20,
+    },
+    label: {
+      padding: 20,
+      ...Platform.select({
+        ios: {
+          color: PlatformColor("light"),
+          backgroundColor: PlatformColor("systemTealColor"),
+        },
+        android: {
+          color: PlatformColor("?android:attr/textColor"),
+          backgroundColor: PlatformColor("@android:color/holo_blue_bright"),
+        },
+        default: { backgroundColor: "black" },
+      }),
     },
   },
   container2: {
