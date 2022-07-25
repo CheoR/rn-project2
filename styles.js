@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
     width: "100%",
   },
+  container2: {
+    padding: 8,
+    backgroundColor: "lightgreen",
+    width: "50%",
+    height: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "auto",
+  },
   flatList: {
     backgroundColor: "green",
     width: "100%",

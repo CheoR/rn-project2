@@ -17,6 +17,7 @@ import {
   Switch,
   Text,
   TextInput,
+  TouchableNativeFeedback,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -47,6 +48,17 @@ const renderItems = ({ item }) => (
   </View>
 );
 
+const RIPPLE_COLORS = [
+  "red",
+  "black",
+  "yellow",
+  "blue",
+  "green",
+  "brown",
+  "white",
+];
+const randomColor = () =>
+  RIPPLE_COLORS[Math.floor(Math.random() * RIPPLE_COLORS.length)];
 const inputAccesssoryViewId = "id";
 
 export default function App() {
@@ -56,6 +68,8 @@ export default function App() {
   const [count, setCount] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
   const [text, setText] = useState("");
+  const [rippleOverflow, setRippleOverflow] = useState(false);
+  const [rippleColor, setRippleColor] = useState("red");
 
   const increment = () => setCount((prevState) => prevState + 1);
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
@@ -76,6 +90,23 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.container2}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            setRippleOverflow((prevState) => !prevState.rippleOverflow);
+            setRippleColor(randomColor);
+          }}
+          background={TouchableNativeFeedback.Ripple(
+            rippleColor,
+            rippleOverflow
+          )}
+        >
+          <View>
+            <Text style={styles.li.text}>Touch here</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
+      {/* 
       <View style={styles.img}>
         <Image source={require("./assets/icon.png")} style={styles.img2} />
       </View>
@@ -131,7 +162,7 @@ export default function App() {
           ios_backgroundColor="orange"
         />
       </View>
-      {/* <View>
+      <View>
         <TextInput
           placeholder="Press Here"
           onChangeText={(text) => setText(text)}
