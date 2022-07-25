@@ -1,9 +1,10 @@
 // import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   ActivityIndicator,
   Alert,
+  Animated,
   Button,
   FlatList,
   InputAccessoryView,
@@ -91,6 +92,7 @@ export default function App() {
   const [number, setNumber] = useState(0);
   const [rippleOverflow, setRippleOverflow] = useState(false);
   const [rippleColor, setRippleColor] = useState("red");
+  const fadeAnimation = useRef(new Animated.Value(0)).current;
 
   const increment = () => setCount((prevState) => prevState + 1);
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
@@ -109,8 +111,40 @@ export default function App() {
     }, 10000);
   };
 
+  const fadeIn = () => {
+    Animated.timing(fadeAnimation, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnimation, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.container.fadingContainer,
+          {
+            opacity: fadeAnimation,
+          },
+        ]}
+      >
+        <Text style={styles.container.fadingText}>Fading Text</Text>
+      </Animated.View>
+      <View style={styles.container.buttonRow}>
+        <Button title="Fade In" onPress={fadeIn} />
+
+        <Button title="Fade Out" onPress={fadeOut} />
+      </View>
+      {/*
       <Text>OS</Text>
       <Text style={styles.osValues}>{Platform.OS}</Text>
 
@@ -131,7 +165,7 @@ export default function App() {
       <Text style={styles.osValues}>
         {JSON.stringify(Platform.constants, null, 2)}
       </Text>
-      {/* 
+ 
       <View style={styles.toggleLightMode}>
         <TextInput
           style={styles.toggleLightMode.textInput}

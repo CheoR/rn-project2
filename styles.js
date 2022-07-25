@@ -5,11 +5,22 @@ const colorScheme = Appearance.getColorScheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
     padding: 8,
     backgroundColor: "orange",
-    width: "100%",
+    // width: "100%",
+    fadingContainer: {
+      padding: 20,
+      backgroundColor: "lightgreen",
+    },
+    fadingText: {
+      fontSize: 30,
+    },
+    buttonRow: {
+      justifyContent: "center",
+      marginVertical: 20,
+    },
   },
   container2: {
     padding: 8,
