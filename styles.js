@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
         default: { backgroundColor: "black" },
       }),
     },
+    navigationContainer: {
+      background: "lightgreen",
+    },
+    text: {
+      padding: 15,
+      fontSize: 15,
+      textAlign: "center",
+    },
   },
   container2: {
     padding: 8,
