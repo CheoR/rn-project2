@@ -1,4 +1,6 @@
-import { StyleSheet } from "react-native";
+import { Appearance, StyleSheet } from "react-native";
+
+const colorScheme = Appearance.getColorScheme();
 
 const styles = StyleSheet.create({
   container: {
@@ -78,6 +80,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     borderRadius: 25,
+  },
+  toggleLightMode: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: colorScheme === "light" ? "white" : "dark",
+    textInput: {
+      marginTop: 20,
+      backgroundColor: colorScheme === "light" ? "black" : "white",
+      color: colorScheme === "light" ? "white" : "black",
+      padding: 20,
+    },
+    text: {
+      fontSize: 20,
+      marginTop: 20,
+      color: colorScheme === "light" ? "black" : "white",
+      padding: 20,
+    },
   },
 });
 

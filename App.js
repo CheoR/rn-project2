@@ -87,6 +87,7 @@ export default function App() {
   const [count, setCount] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
   const [text, setText] = useState("");
+  const [number, setNumber] = useState(0);
   const [rippleOverflow, setRippleOverflow] = useState(false);
   const [rippleColor, setRippleColor] = useState("red");
 
@@ -109,7 +110,22 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.container2}>
+      <View style={styles.toggleLightMode}>
+        <TextInput
+          style={styles.toggleLightMode.textInput}
+          placeholder="Text here"
+          onChangeText={setText}
+        />
+        <TextInput
+          style={styles.toggleLightMode.textInput}
+          placeholder="Number here"
+          onChangeText={setNumber}
+        />
+        <Text style={styles.toggleLightMode.text}>
+          {text} {number}
+        </Text>
+      </View>
+      {/* <View style={styles.container2}>
         <Button onPress={showToast} title="Show Toast" />
         <Button
           onPress={showToastWithGravity}
@@ -119,7 +135,7 @@ export default function App() {
           onPress={showToastWithGravityAndOffset}
           title="Show Toast with Gravity and offset"
         />
-      </View>
+      </View> */}
 
       {/* 
         <TouchableNativeFeedback
