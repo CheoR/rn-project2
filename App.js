@@ -17,6 +17,7 @@ import {
   Switch,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableNativeFeedback,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -25,6 +26,17 @@ import {
 import styles from "./styles";
 
 import DATA, { FOOD_DATA } from "./data/data";
+
+const inputAccesssoryViewId = "id";
+const RIPPLE_COLORS = [
+  "red",
+  "black",
+  "yellow",
+  "blue",
+  "green",
+  "brown",
+  "white",
+];
 
 const pressHandler = (text) => {
   console.log(text);
@@ -48,18 +60,25 @@ const renderItems = ({ item }) => (
   </View>
 );
 
-const RIPPLE_COLORS = [
-  "red",
-  "black",
-  "yellow",
-  "blue",
-  "green",
-  "brown",
-  "white",
-];
 const randomColor = () =>
   RIPPLE_COLORS[Math.floor(Math.random() * RIPPLE_COLORS.length)];
-const inputAccesssoryViewId = "id";
+
+const showToast = () =>
+  ToastAndroid.show("Toast Android example", ToastAndroid.SHORT);
+const showToastWithGravity = () =>
+  ToastAndroid.showWithGravity(
+    "Toast Android with Gravity Example",
+    ToastAndroid.SHORT,
+    ToastAndroid.CENTER
+  );
+const showToastWithGravityAndOffset = () =>
+  ToastAndroid.showWithGravity(
+    "Toast Android with Gravity and Offset Example",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    30,
+    100
+  );
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,6 +110,18 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.container2}>
+        <Button onPress={showToast} title="Show Toast" />
+        <Button
+          onPress={showToastWithGravity}
+          title="Show Toast with Gravity"
+        />
+        <Button
+          onPress={showToastWithGravityAndOffset}
+          title="Show Toast with Gravity and offset"
+        />
+      </View>
+
+      {/* 
         <TouchableNativeFeedback
           onPress={() => {
             setRippleOverflow((prevState) => !prevState.rippleOverflow);
@@ -106,7 +137,7 @@ export default function App() {
           </View>
         </TouchableNativeFeedback>
       </View>
-      {/* 
+
       <View style={styles.img}>
         <Image source={require("./assets/icon.png")} style={styles.img2} />
       </View>
