@@ -98,6 +98,11 @@ const styles = StyleSheet.create({
       padding: 20,
     },
   },
+  osValues: {
+    fontWeight: "bold",
+    padding: 20,
+    marginBottom: 10,
+  },
 });
 
 export default styles;

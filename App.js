@@ -10,6 +10,7 @@ import {
   Image,
   Keyboard,
   Modal,
+  Platform,
   Pressable,
   RefreshControl,
   SectionList,
@@ -110,6 +111,27 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text>OS</Text>
+      <Text style={styles.osValues}>{Platform.OS}</Text>
+
+      <Text>OS Version</Text>
+      <Text style={styles.osValues}>{Platform.Version}</Text>
+
+      <Text>isTV</Text>
+      <Text style={styles.osValues}>{Platform.isTV.toString()}</Text>
+
+      {Platform.OS === "ios" && (
+        <>
+          <Text>isPad</Text>
+          <Text style={styles.osValues}>{Platform.isPad.toString()}</Text>
+        </>
+      )}
+
+      <Text>Constants</Text>
+      <Text style={styles.osValues}>
+        {JSON.stringify(Platform.constants, null, 2)}
+      </Text>
+      {/* 
       <View style={styles.toggleLightMode}>
         <TextInput
           style={styles.toggleLightMode.textInput}
@@ -125,7 +147,7 @@ export default function App() {
           {text} {number}
         </Text>
       </View>
-      {/* <View style={styles.container2}>
+      <View style={styles.container2}>
         <Button onPress={showToast} title="Show Toast" />
         <Button
           onPress={showToastWithGravity}
