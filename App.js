@@ -6,6 +6,7 @@ import {
   Alert,
   Button,
   FlatList,
+  InputAccessoryView,
   Image,
   Keyboard,
   Modal,
@@ -32,12 +33,29 @@ const pressHandler = (text) => {
   ]);
 };
 
+const Item = ({ title }) => (
+  <View style={styles.cntr}>
+    <Text style={styles.li.text}>{title}</Text>
+  </View>
+);
+
+const renderItems = ({ item }) => (
+  <View style={styles.li.cntr}>
+    <TouchableOpacity onPress={() => pressHandler(item.text)}>
+      <Text style={styles.li.text}>{item.text}</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+const inputAccesssoryViewId = "id";
+
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [showAnimator, setShowAnimator] = useState(false);
   const [count, setCount] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
+  const [text, setText] = useState("");
 
   const increment = () => setCount((prevState) => prevState + 1);
   const toggleSwitch = () => setIsOn((prevState) => !prevState);
@@ -55,12 +73,6 @@ export default function App() {
       setRefreshing(false);
     }, 10000);
   };
-
-  const Item = ({ title }) => (
-    <View style={styles.cntr}>
-      <Text style={styles.li.text}>{title}</Text>
-    </View>
-  );
 
   return (
     <View style={styles.container}>
@@ -119,6 +131,18 @@ export default function App() {
           ios_backgroundColor="orange"
         />
       </View>
+      {/* <View>
+        <TextInput
+          placeholder="Press Here"
+          onChangeText={(text) => setText(text)}
+          value={text}
+          inputAccesssoryViewId={inputAccesssoryViewId}
+        />
+        <InputAccessoryView nativeID={InputAccessoryView}>
+          <Button title="Clear" onPress={() => setText("")} />
+        </InputAccessoryView>
+      </View> */}
+      {/* 
       <View style={styles.pressible.cntr}>
         <View>
           <Text>{count}</Text>
@@ -144,7 +168,8 @@ export default function App() {
       >
         <Text>Tug to Refresh</Text>
       </ScrollView>
-      {/* 
+
+
       <SectionList
         sections={FOOD_DATA}
         keyExtractor={(item, idx) => item + idx}
@@ -165,11 +190,3 @@ export default function App() {
     </View>
   );
 }
-
-const renderItems = ({ item }) => (
-  <View style={styles.li.cntr}>
-    <TouchableOpacity onPress={() => pressHandler(item.text)}>
-      <Text style={styles.li.text}>{item.text}</Text>
-    </TouchableOpacity>
-  </View>
-);
