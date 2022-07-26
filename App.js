@@ -37,7 +37,7 @@ import {
   Icon as RNIcon,
 } from "@rneui/themed";
 
-import { CheckBox as RNCheckbox } from "@rneui/base";
+import { CheckBox as RNCheckbox, Input } from "@rneui/base";
 
 import Slider from "@react-native-community/slider";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -248,6 +248,32 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Input
+        placeholder="RN Email"
+        type="email"
+        secureTextEntry
+        onChangeText={(text) => setText(text)}
+        onSubmitEditing={() => {
+          console.log(text);
+        }}
+      />
+      <Input
+        placeholder="RN input"
+        type="password"
+        secureTextEntry
+        onChangeText={(text) => setText(text)}
+        onSubmitEditing={() => {
+          console.log(text);
+        }}
+      />
+      <Button
+        title="Click"
+        type="outline"
+        onPress={() => {
+          console.log("button clicked");
+        }}
+      />
+      {/*
       <RNCheckbox
         title="IsNotChecked"
         checked={isChecked}
@@ -256,7 +282,7 @@ export default function App() {
         checkedIcon="dot-circle-o"
         uncheckedIcon="circle-o"
       />
-      {/*
+
       <Avatar
         rounded
         containerStyle={{ height: 100, width: 200 }}
