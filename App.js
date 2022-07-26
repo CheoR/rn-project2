@@ -29,8 +29,14 @@ import {
   Vibration,
   View,
 } from "react-native";
-import { Avatar, Badge } from "@rneui/themed";
+import {
+  Avatar,
+  Badge,
+  Button as RNButton,
+  Icon as RNIcon,
+} from "@rneui/themed";
 import Slider from "@react-native-community/slider";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import styles from "./styles";
 
@@ -253,6 +259,26 @@ export default function App() {
         }}
       />
       <Text style={styles.text}>Pug</Text>
+      <RNButton
+        title="React Elements Solid Butons"
+        type="solid"
+        titleStyle={{ color: "red" }}
+        containerStyle={{ backgroundColor: "blue" }}
+      />
+      <Button
+        title="React-Native Solid Butons"
+        type="solid"
+        titleStyle={{ color: "blue" }}
+        containerStyle={{ backgroundColor: "red" }}
+      />
+      <Button
+        title="Click Icon"
+        // loading
+        icon={<Icon name="arrow-right" size={20} color="white" />}
+        type="solid"
+        titleStyle={{ color: "orange" }}
+        containerStyle={{ backgroundColor: "black" }}
+      />
       {/*
       <Text style={[styles.text, { opacity: number, fontSize: 36 }]}>
         {Math.floor(number * 100)}
