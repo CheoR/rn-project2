@@ -68,3 +68,5 @@ export const PATTERN = [
   3 * ONE_SECOND_IN_MS,
 ];
 export const PATTERN_DESCRIPTION = "Wait 1s, vibrate 2s, wait3s";
+export const PUG_IMG_LINK =
+  "https://images.unsplash.com/photo-1538131688925-7e0eb2e7828b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHB1Z3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";

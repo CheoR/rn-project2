@@ -29,6 +29,7 @@ import {
   Vibration,
   View,
 } from "react-native";
+import { Avatar } from "@rneui/themed";
 import Slider from "@react-native-community/slider";
 
 import styles from "./styles";
@@ -39,6 +40,7 @@ import DATA, {
   ONE_SECOND_IN_MS,
   PATTERN,
   PATTERN_DESCRIPTION,
+  PUG_IMG_LINK,
   RIPPLE_COLORS,
 } from "./data/data";
 
@@ -234,6 +236,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Avatar
+        rounded
+        containerStyle={{ height: 100, width: 200 }}
+        source={{ uri: PUG_IMG_LINK }}
+      />
+      <Text style={styles.text}>Pug</Text>
+      {/*
       <Text style={[styles.text, { opacity: number, fontSize: 36 }]}>
         {Math.floor(number * 100)}
       </Text>
@@ -244,7 +253,6 @@ export default function App() {
         maximumValue={1}
         thumbTintColor={styles.slider.thumbTintColor}
       />
-      {/*
       <TextInput style={styles.input} onChangeText={setText} value={text} />
       <TouchableNativeFeedback
         onPress={onPressVibrate}
