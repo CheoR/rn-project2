@@ -29,7 +29,7 @@ import {
   Vibration,
   View,
 } from "react-native";
-import { Avatar } from "@rneui/themed";
+import { Avatar, Badge } from "@rneui/themed";
 import Slider from "@react-native-community/slider";
 
 import styles from "./styles";
@@ -240,6 +240,17 @@ export default function App() {
         rounded
         containerStyle={{ height: 100, width: 200 }}
         source={{ uri: PUG_IMG_LINK }}
+        size="large"
+      />
+      <Badge
+        status="success"
+        value="this is a badge"
+        containerStyle={{
+          backgroundColor: "red",
+          position: "absolute",
+          right: 160,
+          top: 390,
+        }}
       />
       <Text style={styles.text}>Pug</Text>
       {/*
