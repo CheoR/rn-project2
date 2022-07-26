@@ -26,14 +26,18 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Vibration,
   View,
 } from "react-native";
 import styles from "./styles";
 
 import DATA, {
-  FOOD_DATA,
-  RIPPLE_COLORS,
   inputAccesssoryViewId,
+  FOOD_DATA,
+  ONE_SECOND_IN_MS,
+  PATTERN,
+  PATTERN_DESCRIPTION,
+  RIPPLE_COLORS,
 } from "./data/data";
 
 const pressHandler = (text) => {
@@ -210,8 +214,35 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.container.text}>{text}</Text>
-      <Button title="Click" onPress={clickMeForPrompt} />
+      <Text style={styles.container.text}>Vibration API</Text>
+      <View>
+        <Button title="Vibrate Once" onPress={() => Vibration.vibrate()} />
+      </View>
+      <View>
+        <Button
+          title="Vibrate for 10 secons"
+          onPress={() => Vibration.vibrate(10 * ONE_SECOND_IN_MS)}
+        />
+      </View>
+      <Text style={styles.container.text}>Pattern: {PATTERN_DESCRIPTION} </Text>
+
+      <View>
+        <Button
+          title="Vibrate with pattern"
+          onPress={() => Vibration.vibrate(PATTERN)}
+        />
+      </View>
+      <View>
+        <Button
+          title="Vibrate with pattern until cancelled"
+          onPress={() => Vibration.vibrate(PATTERN, true)}
+        />
+        <Button
+          title="stop vibration patttern"
+          onPress={() => Vibration.cancel()}
+          color="red"
+        />
+      </View>
       {/*
       <Text style={styles.text}>{text}</Text>
       <Button onPress={onPress} title="Show Action Sheet" />
