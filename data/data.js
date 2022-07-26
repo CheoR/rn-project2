@@ -1,4 +1,4 @@
-const DATA = [
+export default DATA = [
   { id: 1, text: "Text1" },
   { id: 2, text: "Text2" },
   { id: 3, text: "Text3" },
@@ -49,4 +49,14 @@ export const FOOD_DATA = [
   },
 ];
 
-export default DATA;
+export const RIPPLE_COLORS = [
+  "red",
+  "black",
+  "yellow",
+  "blue",
+  "green",
+  "brown",
+  "white",
+];
+
+export const inputAccesssoryViewId = "id";

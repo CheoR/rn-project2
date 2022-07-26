@@ -1,7 +1,8 @@
 // import { StatusBar } from "expo-status-bar";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
+  ActionSheetIOS,
   ActivityIndicator,
   Alert,
   Animated,
@@ -29,18 +30,11 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-import DATA, { FOOD_DATA } from "./data/data";
-
-const inputAccesssoryViewId = "id";
-const RIPPLE_COLORS = [
-  "red",
-  "black",
-  "yellow",
-  "blue",
-  "green",
-  "brown",
-  "white",
-];
+import DATA, {
+  FOOD_DATA,
+  RIPPLE_COLORS,
+  inputAccesssoryViewId,
+} from "./data/data";
 
 const pressHandler = (text) => {
   console.log(text);
@@ -152,6 +146,27 @@ export default function App() {
     </View>
   );
 
+  const onPress = () => {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        Options: ["Cancel", "Generate Number", "Reset"],
+        destructiveButtonIndex: 2,
+        cancelButtonIndex: 0,
+        userInterfaceStyle: "dark",
+        title: "Only for IOS",
+        message: "generate random number for ios",
+      },
+      (buttonIndex) => {
+        if (buttonIndex === 0) {
+        } else if (buttonIndex === 1) {
+          setText(Math.floor(Math.random() * 100 + 1));
+        } else if (buttonIndex === 2) {
+          setText("Randome Number");
+        }
+      }
+    );
+  };
+
   useEffect(() => {
     const backAction = () => {
       Alert.alert("Stop", "Go back?", [
@@ -176,8 +191,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Click back button</Text>
+      <Text style={styles.text}>{text}</Text>
+      <Button onPress={onPress} title="Show Action Sheet" />
       {/*
+      <Text style={styles.text}>Click back button</Text>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.box}>
           <Text style={styles.text}>Original Object</Text>
