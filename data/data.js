@@ -1,4 +1,4 @@
-export default DATA = [
+export const DATA = [
   { id: 1, text: "Text1" },
   { id: 2, text: "Text2" },
   { id: 3, text: "Text3" },

@@ -29,18 +29,23 @@ import {
   Vibration,
   View,
 } from "react-native";
+
 import {
   Avatar,
   Badge,
   Button as RNButton,
   Icon as RNIcon,
 } from "@rneui/themed";
+
+import { CheckBox as RNCheckbox } from "@rneui/base";
+
 import Slider from "@react-native-community/slider";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import styles from "./styles";
 
-import DATA, {
+import {
+  DATA,
   inputAccesssoryViewId,
   FOOD_DATA,
   ONE_SECOND_IN_MS,
@@ -106,6 +111,7 @@ export default function App() {
   const [number, setNumber] = useState(0);
   const [rippleOverflow, setRippleOverflow] = useState(false);
   const [rippleColor, setRippleColor] = useState("red");
+  const [isChecked, setIsChecked] = useState(true);
 
   const changeDrawerPosition = () => {
     if (drawerPosition === "left") {
@@ -242,6 +248,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <RNCheckbox
+        title="IsNotChecked"
+        checked={isChecked}
+        checkedTitle="IsChecked"
+        onPress={() => setIsChecked((prevState) => !prevState)}
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+      />
+      {/*
       <Avatar
         rounded
         containerStyle={{ height: 100, width: 200 }}
@@ -279,7 +294,7 @@ export default function App() {
         titleStyle={{ color: "orange" }}
         containerStyle={{ backgroundColor: "black" }}
       />
-      {/*
+
       <Text style={[styles.text, { opacity: number, fontSize: 36 }]}>
         {Math.floor(number * 100)}
       </Text>
