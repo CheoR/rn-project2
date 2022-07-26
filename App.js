@@ -1,10 +1,11 @@
 // import { StatusBar } from "expo-status-bar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   ActivityIndicator,
   Alert,
   Animated,
+  BackHandler,
   Button,
   DrawerLayoutAndroid,
   FlatList,
@@ -151,8 +152,32 @@ export default function App() {
     </View>
   );
 
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Stop", "Go back?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        {
+          text: "Confirm",
+          onPress: () => BackHandler.exitApp(),
+        },
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Click back button</Text>
+      {/*
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.box}>
           <Text style={styles.text}>Original Object</Text>
@@ -207,7 +232,7 @@ export default function App() {
           <Text style={styles.text}>Original Object translateY by 50 deg</Text>
         </View>
       </ScrollView>
-      {/*
+
 <DrawerLayoutAndroid
   ref={drawer}
   drawerWidth={300}
