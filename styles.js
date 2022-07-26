@@ -5,8 +5,8 @@ const colorScheme = Appearance.getColorScheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     padding: 8,
     backgroundColor: "orange",
     // width: "100%",
@@ -38,11 +38,24 @@ const styles = StyleSheet.create({
     navigationContainer: {
       background: "lightgreen",
     },
-    text: {
-      padding: 15,
-      fontSize: 15,
-      textAlign: "center",
-    },
+  },
+  text: {
+    padding: 15,
+    fontSize: 15,
+    textAlign: "center",
+  },
+  box: {
+    height: 100,
+    width: 100,
+    borderRadius: 5,
+    marginVertical: 40,
+    backgroundColor: "lightblue",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  scrollViewContainer: {
+    alignItems: "center",
+    paddingBottom: 60,
   },
   container2: {
     padding: 8,
