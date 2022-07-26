@@ -42,6 +42,12 @@ import { CheckBox as RNCheckbox, Input } from "@rneui/base";
 import Slider from "@react-native-community/slider";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+import {
+  Button as RNEButton,
+  Input as RNEInput,
+  Overlay,
+} from "react-native-elements";
+
 import styles from "./styles";
 
 import {
@@ -112,6 +118,7 @@ export default function App() {
   const [rippleOverflow, setRippleOverflow] = useState(false);
   const [rippleColor, setRippleColor] = useState("red");
   const [isChecked, setIsChecked] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const changeDrawerPosition = () => {
     if (drawerPosition === "left") {
@@ -224,6 +231,8 @@ export default function App() {
       },
     ]);
   };
+
+  const toggleOverlay = () => setIsVisible((prevState) => !prevState);
   // useEffect(() => {
   //   const backAction = () => {
   //     Alert.alert("Stop", "Go back?", [
@@ -248,6 +257,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <RNEInput placeholder=" Name" value={text} onChangeText={setText} />
+      <RNEInput
+        placeholder=" Age"
+        value={text}
+        keyboardType="numeric"
+        onChangeText={setText}
+      />
+      <Button title="Click" onPress={toggleOverlay} />
+      <Overlay
+        isVisible={isVisible}
+        onBackdropPress={toggleOverlay}
+        overlayStyle={styles.overlay}
+        backdropStyle={styles.overlay.backdrop}
+      >
+        <Text>Name: {text} </Text>
+        <Text>Age: {number}</Text>
+      </Overlay>
+      {/*
       <Input
         placeholder="RN Email"
         type="email"
@@ -275,7 +302,7 @@ export default function App() {
         checkedIcon="dot-circle-o"
         uncheckedIcon="circle-o"
       />
-      {/*
+
       <Input
         placeholder="RN input"
         type="password"
@@ -468,7 +495,7 @@ export default function App() {
       style={styles.textInput}
     />
     <TextInput
-      placeholder="Input Number"
+     Text placeholder="Input Number"
       onChangeText={setNumber}
       style={styles.textInput}
       keyboardType="numeric"

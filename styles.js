@@ -154,6 +154,15 @@ const styles = StyleSheet.create({
     height: 500,
     thumbTintColor: "red",
   },
+  overlay: {
+    backgroundColor: "lightgray",
+    width: 300,
+    height: 100,
+    backdrop: {
+      backgroundColor: "black",
+      opacity: 0.8,
+    },
+  },
 });
 
 export default styles;
