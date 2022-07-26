@@ -190,6 +190,24 @@ export default function App() {
     );
   };
 
+  const onPressVibrate = () => {
+    Vibration.vibrate();
+    Alert.alert("Welcom", `hello ${text}, welcome to app`);
+  };
+
+  const onLongPressVibrate = () => {
+    Vibration.vibrate(2000);
+    Alert.alert("Warning", "Confirm clear text?", [
+      {
+        text: "Yes",
+        onPress: () => setText(""),
+      },
+      {
+        text: "Cancel",
+        onPress: () => {},
+      },
+    ]);
+  };
   // useEffect(() => {
   //   const backAction = () => {
   //     Alert.alert("Stop", "Go back?", [
@@ -214,6 +232,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <TextInput style={styles.input} onChangeText={setText} value={text} />
+      <TouchableNativeFeedback
+        onPress={onPressVibrate}
+        onLongPress={onLongPressVibrate}
+      >
+        <View style={styles.button}>
+          <Text>Submit</Text>
+        </View>
+      </TouchableNativeFeedback>
+      {/*
       <Text style={styles.container.text}>Vibration API</Text>
       <View>
         <Button title="Vibrate Once" onPress={() => Vibration.vibrate()} />
@@ -243,7 +271,7 @@ export default function App() {
           color="red"
         />
       </View>
-      {/*
+
       <Text style={styles.text}>{text}</Text>
       <Button onPress={onPress} title="Show Action Sheet" />
       <Text style={styles.text}>Click back button</Text>
