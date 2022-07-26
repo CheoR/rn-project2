@@ -167,33 +167,54 @@ export default function App() {
     );
   };
 
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("Stop", "Go back?", [
+  const clickMeForPrompt = () => {
+    Alert.prompt(
+      "Hola",
+      "Enter Name",
+      [
+        {
+          text: "Submit",
+          onPress: (text) => setText(text),
+        },
         {
           text: "Cancel",
-          onPress: () => null,
-          style: "cancel",
+          onPress: () => console.log("Cancel button pressed"),
         },
-        {
-          text: "Confirm",
-          onPress: () => BackHandler.exitApp(),
-        },
-      ]);
-      return true;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
+      ],
+      "plain-text",
+      "Name"
     );
-  }, []);
+  };
+
+  // useEffect(() => {
+  //   const backAction = () => {
+  //     Alert.alert("Stop", "Go back?", [
+  //       {
+  //         text: "Cancel",
+  //         onPress: () => null,
+  //         style: "cancel",
+  //       },
+  //       {
+  //         text: "Confirm",
+  //         onPress: () => BackHandler.exitApp(),
+  //       },
+  //     ]);
+  //     return true;
+  //   };
+
+  //   const backHandler = BackHandler.addEventListener(
+  //     "hardwareBackPress",
+  //     backAction
+  //   );
+  // }, []);
 
   return (
     <View style={styles.container}>
+      <Text style={styles.container.text}>{text}</Text>
+      <Button title="Click" onPress={clickMeForPrompt} />
+      {/*
       <Text style={styles.text}>{text}</Text>
       <Button onPress={onPress} title="Show Action Sheet" />
-      {/*
       <Text style={styles.text}>Click back button</Text>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.box}>
