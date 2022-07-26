@@ -29,6 +29,8 @@ import {
   Vibration,
   View,
 } from "react-native";
+import Slider from "@react-native-community/slider";
+
 import styles from "./styles";
 
 import DATA, {
@@ -232,6 +234,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text style={[styles.text, { opacity: number, fontSize: 36 }]}>
+        {Math.floor(number * 100)}
+      </Text>
+      <Slider
+        style={styles.slider}
+        onValueChange={setNumber}
+        minimumValue={0}
+        maximumValue={1}
+        thumbTintColor={styles.slider.thumbTintColor}
+      />
+      {/*
       <TextInput style={styles.input} onChangeText={setText} value={text} />
       <TouchableNativeFeedback
         onPress={onPressVibrate}
@@ -241,7 +254,7 @@ export default function App() {
           <Text>Submit</Text>
         </View>
       </TouchableNativeFeedback>
-      {/*
+
       <Text style={styles.container.text}>Vibration API</Text>
       <View>
         <Button title="Vibrate Once" onPress={() => Vibration.vibrate()} />

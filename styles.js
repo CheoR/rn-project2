@@ -149,6 +149,11 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 10,
   },
+  slider: {
+    width: 300,
+    height: 500,
+    thumbTintColor: "red",
+  },
 });
 
 export default styles;
