@@ -257,6 +257,25 @@ export default function App() {
           console.log(text);
         }}
       />
+
+      <RNCheckbox
+        title="IsNotChecked1"
+        checked={isChecked}
+        checkedTitle="IsChecked1"
+        onPress={() => setIsChecked((prevState) => !prevState)}
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+      />
+
+      <RNCheckbox
+        title="IsNotChecked2"
+        checked={!isChecked}
+        checkedTitle="IsChecked2"
+        onPress={() => setIsChecked((prevState) => !prevState)}
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+      />
+      {/*
       <Input
         placeholder="RN input"
         type="password"
@@ -273,7 +292,7 @@ export default function App() {
           console.log("button clicked");
         }}
       />
-      {/*
+
       <RNCheckbox
         title="IsNotChecked"
         checked={isChecked}
