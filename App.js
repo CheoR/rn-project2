@@ -46,6 +46,7 @@ import {
   Button as RNEButton,
   Input as RNEInput,
   Overlay,
+  PricingCard,
 } from "react-native-elements";
 
 import styles from "./styles";
@@ -233,20 +234,34 @@ export default function App() {
   };
 
   const toggleOverlay = () => setIsVisible((prevState) => !prevState);
+  const handlePricingCardPress = () => {
+    Alert.alert("Stop", "Go back?", [
+      {
+        text: "Cancel",
+        onPress: () => null,
+        style: "cancel",
+      },
+      {
+        text: "Confirm",
+        onPress: () => BackHandler.exitApp(),
+      },
+    ]);
+    return true;
+  };
   // useEffect(() => {
   //   const backAction = () => {
-  //     Alert.alert("Stop", "Go back?", [
-  //       {
-  //         text: "Cancel",
-  //         onPress: () => null,
-  //         style: "cancel",
-  //       },
-  //       {
-  //         text: "Confirm",
-  //         onPress: () => BackHandler.exitApp(),
-  //       },
-  //     ]);
-  //     return true;
+  // Alert.alert("Stop", "Go back?", [
+  //   {
+  //     text: "Cancel",
+  //     onPress: () => null,
+  //     style: "cancel",
+  //   },
+  //   {
+  //     text: "Confirm",
+  //     onPress: () => BackHandler.exitApp(),
+  //   },
+  // ]);
+  // return true;
   //   };
 
   //   const backHandler = BackHandler.addEventListener(
@@ -257,6 +272,23 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <PricingCard
+        color="green"
+        title="Pricing Card 1"
+        price="$0"
+        info={["line 1", "line2", "line3"]}
+        button={{ title: "button Title", icon: "flight-takeoff" }}
+        onButtonPress={handlePricingCardPress}
+      />
+      <PricingCard
+        color="blue"
+        title="Pricing Card 2"
+        price="$10"
+        info={["line 1", "line2", "line3"]}
+        button={{ title: "button Title", icon: "flight-takeoff" }}
+        onButtonPress={handlePricingCardPress}
+      />
+      {/*
       <RNEInput placeholder=" Name" value={text} onChangeText={setText} />
       <RNEInput
         placeholder=" Age"
@@ -274,7 +306,7 @@ export default function App() {
         <Text>Name: {text} </Text>
         <Text>Age: {number}</Text>
       </Overlay>
-      {/*
+
       <Input
         placeholder="RN Email"
         type="email"
