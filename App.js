@@ -323,9 +323,55 @@ export default function App() {
   const STACK = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <STACK.Navigator>
-        <STACK.Screen name="Home" component={Home} />
-        <STACK.Screen name="ProductCategory" component={ProductCategory} />
+      <STACK.Navigator
+        screenOptions={{
+          // so all screens  have these layouts
+          title: "ScreenName",
+          // does not show up
+          headerBackTitle: "Go Home",
+          fontSize: 24,
+          color: "red",
+          headerStyle: {
+            backgroundColor: "lightgreen",
+          },
+          headerTintColor: "blue",
+          // headerShown: false,
+          headerTitleStyle: {
+            color: "red",
+            fontSize: 15,
+          },
+          headerTextAlign: "right",
+        }}
+      >
+        <STACK.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "Login Screen",
+          }}
+        />
+        <STACK.Screen
+          name="ProductCategory"
+          component={ProductCategory}
+          options={{
+            title: "ProductCategory Screen",
+            // headerBackVisible: false,
+            // does not show up
+            headerBackTitle: "Go Home",
+            fontSize: 24,
+            color: "red",
+            headerTintColor: "green",
+            // headerShown: false,
+            headerTitleStyle: {
+              color: "white",
+              fontSize: 20,
+            },
+            headerTextAlign: "right",
+            headerStyle: {
+              backgroundColor: "black",
+            },
+          }}
+        />
       </STACK.Navigator>
 
       {/*
