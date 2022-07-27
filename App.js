@@ -48,6 +48,7 @@ import {
   FAB,
   Overlay,
   PricingCard,
+  SpeedDial,
 } from "react-native-elements";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -122,7 +123,7 @@ const handlePricingCardPress = () => {
   return true;
 };
 
-const handlePressFAB = () => {
+const handlePressGeneric = () => {
   Alert.alert("Stop", "Go back?", [
     {
       text: "Cancel",
@@ -292,6 +293,28 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <SpeedDial
+        isOpen={isOpen}
+        icon={{ name: "edit", color: "red" }}
+        openIcon={{ name: "close", color: "pink" }}
+        onOpen={() => setIsOpen((prevState) => !prevState)}
+        onClose={() => setIsOpen((prevState) => !prevState)}
+        buttonStyle={{ backgroundColor: "green" }}
+      >
+        <SpeedDial.Action
+          icon={{ name: "add", color: "blue" }}
+          title="Add"
+          buttonStyle={{ backgroundColor: "yellow" }}
+          onPress={handlePressGeneric}
+        />
+        <SpeedDial.Action
+          icon={{ name: "delete", color: "orange" }}
+          title="Delete"
+          buttonStyle={{ backgroundColor: "black" }}
+          onPress={handlePressGeneric}
+        />
+      </SpeedDial>
+      {/*
       <FAB
         title="Add Title"
         placement="right"
@@ -301,7 +324,7 @@ export default function App() {
         buttonStyle={{ backgroundColor: "red" }}
         onPress={handlePressFAB}
       />
-      {/*
+
       <PricingCard
         color="green"
         title="Pricing Card 1"
