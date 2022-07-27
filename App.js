@@ -347,7 +347,7 @@ export default function App() {
           name="Home"
           component={Home}
           options={{
-            title: "Login Screen",
+            title: "Register",
           }}
         />
         <STACK.Screen

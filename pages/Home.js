@@ -9,6 +9,8 @@ function Home() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
 
   const login = () => {
     if (email === "pug@pug.com" && password === "pug") {
@@ -23,10 +25,31 @@ function Home() {
     }
   };
 
+  const register = () => {
+    navigation.navigate("ProductCategory", {
+      test_name: name,
+      test_email: email,
+      test_age: age,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text>Pug Home</Text>
-      <Input placeholder="Email" onChangeText={setEmail} value={email} />
+      <Input placeholder="Name" onChangeText={setName} value={name} />
+      <Input
+        placeholder="Age"
+        onChangeText={setAge}
+        value={age.toString()}
+        keyboardType="numeric"
+      />
+
+      <Input
+        placeholder="Email"
+        onChangeText={setEmail}
+        value={email}
+        type="email"
+      />
       <Input
         placeholder="Password"
         onChangeText={setPassword}
@@ -34,6 +57,8 @@ function Home() {
         type="password"
         secureTextEntry
       />
+      <Button title="Register" onPress={register} />
+
       <Button title="Login" onPress={login} />
       {/* Need to match STACK.Screen name="ProductCategory" */}
       <Button
