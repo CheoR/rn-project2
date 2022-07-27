@@ -45,9 +45,12 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {
   Button as RNEButton,
   Input as RNEInput,
+  FAB,
   Overlay,
   PricingCard,
 } from "react-native-elements";
+
+import { Ionicons } from "@expo/vector-icons";
 
 import styles from "./styles";
 
@@ -103,6 +106,36 @@ const showToastWithGravityAndOffset = () =>
     30,
     100
   );
+
+const handlePricingCardPress = () => {
+  Alert.alert("Stop", "Go back?", [
+    {
+      text: "Cancel",
+      onPress: () => null,
+      style: "cancel",
+    },
+    {
+      text: "Confirm",
+      onPress: () => BackHandler.exitApp(),
+    },
+  ]);
+  return true;
+};
+
+const handlePressFAB = () => {
+  Alert.alert("Stop", "Go back?", [
+    {
+      text: "Cancel",
+      onPress: () => null,
+      style: "cancel",
+    },
+    {
+      text: "Confirm",
+      onPress: () => BackHandler.exitApp(),
+    },
+  ]);
+  return true;
+};
 
 export default function App() {
   const fadeAnimation = useRef(new Animated.Value(0)).current;
@@ -234,20 +267,7 @@ export default function App() {
   };
 
   const toggleOverlay = () => setIsVisible((prevState) => !prevState);
-  const handlePricingCardPress = () => {
-    Alert.alert("Stop", "Go back?", [
-      {
-        text: "Cancel",
-        onPress: () => null,
-        style: "cancel",
-      },
-      {
-        text: "Confirm",
-        onPress: () => BackHandler.exitApp(),
-      },
-    ]);
-    return true;
-  };
+
   // useEffect(() => {
   //   const backAction = () => {
   // Alert.alert("Stop", "Go back?", [
@@ -272,6 +292,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <FAB
+        title="Add Title"
+        placement="right"
+        size="large"
+        upperCase={true}
+        icon={<Ionicons name="add-circle" size={24} color="blue" />}
+        buttonStyle={{ backgroundColor: "red" }}
+        onPress={handlePressFAB}
+      />
+      {/*
       <PricingCard
         color="green"
         title="Pricing Card 1"
@@ -288,7 +318,7 @@ export default function App() {
         button={{ title: "button Title", icon: "flight-takeoff" }}
         onButtonPress={handlePricingCardPress}
       />
-      {/*
+
       <RNEInput placeholder=" Name" value={text} onChangeText={setText} />
       <RNEInput
         placeholder=" Age"
