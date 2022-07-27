@@ -49,6 +49,7 @@ import {
   Overlay,
   PricingCard,
   SpeedDial,
+  SocialIcon,
 } from "react-native-elements";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -293,6 +294,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <SocialIcon type="twitter" light />
+      <SocialIcon type="whatsapp" dark />
+
+      <SocialIcon
+        title="Signin with F"
+        type="facebook"
+        button
+        onPress={handlePressGeneric}
+      />
+
+      {/*
       <SpeedDial
         isOpen={isOpen}
         icon={{ name: "edit", color: "red" }}
@@ -314,7 +326,7 @@ export default function App() {
           onPress={handlePressGeneric}
         />
       </SpeedDial>
-      {/*
+
       <FAB
         title="Add Title"
         placement="right"
