@@ -43,13 +43,16 @@ import Slider from "@react-native-community/slider";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import {
+  BottomSheet,
   Button as RNEButton,
-  Input as RNEInput,
   FAB,
+  Input as RNEInput,
+  ListItem,
   Overlay,
   PricingCard,
   SpeedDial,
   SocialIcon,
+  Tile,
 } from "react-native-elements";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -124,7 +127,7 @@ const handlePricingCardPress = () => {
   return true;
 };
 
-const handlePressGeneric = () => {
+const handleGenericPress = () => {
   Alert.alert("Stop", "Go back?", [
     {
       text: "Cancel",
@@ -270,6 +273,27 @@ export default function App() {
 
   const toggleOverlay = () => setIsVisible((prevState) => !prevState);
 
+  const clearText = () => setText("");
+  const lst = [
+    {
+      title: "Submit",
+      onPress: handleGenericPress,
+    },
+    {
+      title: "Clear Text",
+      onPress: clearText,
+    },
+    {
+      title: "Cancel",
+      containerStyle: {
+        backgroundColor: "red",
+        fontSize: 36,
+        titleStyle: { color: "white" },
+      },
+      onPress: () => setIsVisible(false),
+    },
+  ];
+
   // useEffect(() => {
   //   const backAction = () => {
   // Alert.alert("Stop", "Go back?", [
@@ -294,6 +318,48 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <RNEInput placeholder="Name" value={text} onChangeText={setText} />
+      <Button title="Click" onPress={() => setIsVisible(true)} />
+
+      <BottomSheet
+        isVisible={isVisible}
+        containerStyle={{ backgroundColor: "lightblue" }}
+      >
+        {lst.map((item, idx) => (
+          <ListItem
+            key={idx}
+            containerStyle={item.containerStyle}
+            onPress={item.onPress}
+          >
+            <ListItem.Content>
+              <ListItem.Title style={item.titleStyle}>
+                {item.title}
+              </ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
+        ))}
+      </BottomSheet>
+      {/*
+
+      <Tile
+        imageSrc={require("./assets/adaptive-icon.png")}
+        title="Tile Image1"
+        caption="Caption for Image1"
+        featured
+      />
+      <Tile
+        imageSrc={require("./assets/icon.png")}
+        title="Tile Image2"
+        caption="Caption for Image2"
+        icon={{
+          name: "play-circle",
+          type: "font-awesome",
+          color: "red",
+          size: 30,
+        }}
+        featured
+        onPress={handleGenericPress}
+      />
       <SocialIcon type="twitter" light />
       <SocialIcon type="whatsapp" dark />
 
@@ -301,10 +367,9 @@ export default function App() {
         title="Signin with F"
         type="facebook"
         button
-        onPress={handlePressGeneric}
+        onPress={handleGenericPress}
       />
 
-      {/*
       <SpeedDial
         isOpen={isOpen}
         icon={{ name: "edit", color: "red" }}
@@ -317,13 +382,13 @@ export default function App() {
           icon={{ name: "add", color: "blue" }}
           title="Add"
           buttonStyle={{ backgroundColor: "yellow" }}
-          onPress={handlePressGeneric}
+          onPress={handleGenericPress}
         />
         <SpeedDial.Action
           icon={{ name: "delete", color: "orange" }}
           title="Delete"
           buttonStyle={{ backgroundColor: "black" }}
-          onPress={handlePressGeneric}
+          onPress={handleGenericPress}
         />
       </SpeedDial>
 
