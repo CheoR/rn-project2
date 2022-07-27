@@ -69,6 +69,10 @@ import {
   PUG_IMG_LINK,
   RIPPLE_COLORS,
 } from "./data/data";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer, StackActions } from "@react-navigation/native";
+import Home from "./pages/Home";
+import ProductCategory from "./pages/ProductCategory";
 
 const pressHandler = (text) => {
   console.log(text);
@@ -316,8 +320,16 @@ export default function App() {
   //   );
   // }, []);
 
+  const STACK = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
+    <NavigationContainer>
+      <STACK.Navigator>
+        <STACK.Screen name="Home" component={Home} />
+        <STACK.Screen name="ProductCategory" component={ProductCategory} />
+      </STACK.Navigator>
+
+      {/*
+        <View style={styles.container}>
       <RNEInput placeholder="Name" value={text} onChangeText={setText} />
       <Button title="Click" onPress={() => setIsVisible(true)} />
 
@@ -339,7 +351,7 @@ export default function App() {
           </ListItem>
         ))}
       </BottomSheet>
-      {/*
+
 
       <Tile
         imageSrc={require("./assets/adaptive-icon.png")}
@@ -854,7 +866,9 @@ export default function App() {
     renderItem={renderItems}
     style={styles.flatList}
   /> 
-</DrawerLayoutAndroid>*/}
+</DrawerLayoutAndroid>
     </View>
+    */}
+    </NavigationContainer>
   );
 }
